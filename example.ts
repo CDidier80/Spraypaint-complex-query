@@ -1,8 +1,11 @@
-const phoneChannel = await ConversationChannel.where({
-  name: "Phone"
-})
+const phoneChannel = await ConversationChannel
+  // The first filter
+  .where({
+    name: "Phone"
+  })
   // Merges are for filtering and sorting nested queries. Do not add include() or select() methods.
   .merge({
+    // Filter the nested conversations records by ID
     conversations: Conversation.where({ customerAppId: props.up.id })
   })
   // Included models are always pluralized
