@@ -38,5 +38,8 @@ const phoneChannel = await ConversationChannel
     // Use an array to select multiple attributes.
     customerAppConversationAssignments: ["label", "isPrimary"]
   })
-  .per(1)
+  // Return 25 records per page
+  .per(25)
+  // Start with page 1. Using .page(2) would return the next batch of 25.
+  .page(1)
   .all()
